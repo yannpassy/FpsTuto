@@ -24,8 +24,8 @@ public class PlayerMotor : MonoBehaviour
     public void ProcessMove(Vector2 _input)
     {
         Vector3 moveDirection = Vector3.zero;
-        moveDirection.x = _input.x;
-        moveDirection.z = _input.y;
+        moveDirection.x = _input.x;  // axe x : gauche - droite
+        moveDirection.z = _input.y;  // axe z : avancer - reculer  (axe y : sauter - baisser)
         // TransformDirection permet d'avancer vers là où le joueur regarde
         controller.Move(transform.TransformDirection(moveDirection) * speed * Time.deltaTime);
 
