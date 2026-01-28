@@ -33,6 +33,23 @@ public class PlayerMotor : MonoBehaviour
     void Update()
     {
         isGrounded = controller.isGrounded;
+        if(lerpCrouch)
+        {
+            crouchTimer += Time.deltaTime;
+            float p = crouchTimer /1;
+            p *=p;
+            if(crouching)
+                controller.height = Mathf.Lerp(controller.height,1,p);
+            else 
+                controller.height = Mathf.Lerp(controller.height,2,p);
+
+            if (p>1)
+            {
+                lerpCrouch = false;
+                crouchTimer = 0;
+            }
+
+        }
     }
 
     // receive input from InputManager.cs and apply it to the CharacterManager
@@ -65,5 +82,12 @@ public class PlayerMotor : MonoBehaviour
     {
         sprinting = !sprinting;
         speed = sprinting?sprintSpeed:normalSpeed;
+    }
+
+    public void Crouch()
+    {
+        crouching = !crouching;
+        crouchTimer = 0;
+        lerpCrouch = true; // active le crouching montant ou descendant avec un lerp
     }
 }

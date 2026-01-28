@@ -17,6 +17,7 @@ public class InputManager : MonoBehaviour
         look = GetComponent<PlayerLook>();
         onFoot.Jump.performed += ctx => motor.Jump(); // each time the button jump is pushed, call motor.Jump()
         onFoot.Sprint.performed += ctx => motor.Sprint();
+        onFoot.Crouch.performed += ctx => motor.Crouch();
     }
 
     // Update is called once per frame
