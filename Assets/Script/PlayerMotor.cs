@@ -5,13 +5,28 @@ public class PlayerMotor : MonoBehaviour
     private CharacterController controller;
     private Vector3 playerVelocity;
     private bool isGrounded;
-    [SerializeField]private float speed = 5f;
+
+    [Header ("Speed")]
+    [SerializeField]private float normalSpeed = 5f;
+    [SerializeField]private float sprintSpeed = 8f;
+    private float speed;
+
+    [Header ("j-Jump")]
     [SerializeField]private float gravity = -9.8f;
     [SerializeField]private float jumpHeight = 3f;
+
+    [Header ("Crouch")]
+    private float crouchTimer;
+    private bool crouching;
+    private bool lerpCrouch;
+
+    [Header ("Sprint")]
+    private bool sprinting;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         controller = GetComponent<CharacterController>();
+        speed = normalSpeed;
     }
 
     // Update is called once per frame
@@ -44,5 +59,11 @@ public class PlayerMotor : MonoBehaviour
         {
             playerVelocity.y += Mathf.Sqrt(jumpHeight * -3.0f * gravity);  // ??? (from the tutorial, it didn't explain why)
         }
+    }
+
+    public void Sprint()
+    {
+        sprinting = !sprinting;
+        speed = sprinting?sprintSpeed:normalSpeed;
     }
 }
