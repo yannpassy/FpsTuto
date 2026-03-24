@@ -1537,7 +1537,7 @@ GameObject:
   - component: {fileID: 1376778418}
   - component: {fileID: 1376778417}
   - component: {fileID: 1376778416}
-  m_Layer: 0
+  m_Layer: 6
   m_Name: Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -2494,6 +2494,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 4183400739127444434, guid: 62b54b9d16fb79c4d905e510ce2c2474, type: 3}
+      propertyPath: mask.m_Bits
+      value: 64
+      objectReference: {fileID: 0}
     - target: {fileID: 4468400311048729272, guid: 62b54b9d16fb79c4d905e510ce2c2474, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
